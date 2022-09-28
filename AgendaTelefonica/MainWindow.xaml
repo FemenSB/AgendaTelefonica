@@ -5,50 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgendaTelefonica"
         mc:Ignorable="d"
-        Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize">
+           Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize" Icon="/icon.png">
     <Grid>
-        <Button 
-            Height="25"
-            Width="140"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            FontSize="12"
-            Content="Criar Novo Contato" Margin="58,10,0,0">
-        </Button>
-        <StackPanel Margin="10,40,10,161">
-            <ListBox Margin="10" Width="231" Height="196" HorizontalAlignment="Left">
-                <ListBoxItem IsSelected="False" HorizontalContentAlignment="Center">Contato 1</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 2</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 3</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 4</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 5</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 6</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 7</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 8</ListBoxItem>
-                <ListBoxItem HorizontalContentAlignment="Center">Contato 9</ListBoxItem>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-            </ListBox>
-        </StackPanel>
-        <Button 
-            Height="25"
-            Width="209"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            FontSize="12"
-            Content="Remover Contato" Margin="39,366,0,0"/>
+        <Button Grid.Row="0" Width="150" Content="Adicionar Contanto" Click="AddItem"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Height="25"/>
 
-        <Button
-            Height="25"
-            Width="206"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            FontSize="12"
-            Content="Editar Contato" Margin="39,278,0,0"/>
+        <DataGrid x:Name="ContatoDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
+                  Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nome" Binding="{Binding SKU}"/>
+                <DataGridTextColumn Header="Numero" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Anotação" Binding="{Binding Description}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
