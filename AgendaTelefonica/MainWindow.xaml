@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgendaTelefonica"
         mc:Ignorable="d"
-           Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize" Icon="/icon.png">
+           Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
@@ -13,7 +13,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Width="150" Content="Adicionar Contanto" Click="AddItem"
+        <Button Grid.Row="0" Width="150" Content="Adicionar Contanto"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center" Height="25"/>
 
