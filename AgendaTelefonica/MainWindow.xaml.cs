@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaTelefonica.Database;
+using AgendaTelefonica.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,15 @@ namespace AgendaTelefonica
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<Contato> Contatos { get; set; }
+        private readonly DatabaseService databaseService = new();
+
         public MainWindow()
         {
             InitializeComponent();
+            Contatos = databaseService.GetAllContatos().Select(item => new Contato(item)).ToList();
+            ContatoDataGrid.ItemsSource = Contatos;
         }
     }
 }

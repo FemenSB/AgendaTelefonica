@@ -13,5 +13,19 @@ namespace AgendaTelefonica.Models
         public int Id { set; get; }
         public string? Anotacao { set; get; }
         public List<TipoDeContato> TiposDeContato { set; get; }
+
+        public Contato(AgendaTelefonica.Database.Models.ContatoDb contatoDb)
+        {
+            Nome = contatoDb.Nome;
+            Numero = contatoDb.Numero;
+            Id = contatoDb.Id;
+            Anotacao = contatoDb.Anotacao;
+
+            TiposDeContato = new();
+            foreach(var tipo in contatoDb.TiposDeContato)
+            {
+                TiposDeContato.Add(new TipoDeContato(tipo));
+            }
+        }
     }
 }

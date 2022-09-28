@@ -20,9 +20,9 @@
         <DataGrid x:Name="ContatoDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
                   Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nome" Binding="{Binding SKU}"/>
-                <DataGridTextColumn Header="Numero" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Anotação" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="Numero" Binding="{Binding Numero}"/>
+                <DataGridTextColumn Header="Anotação" Binding="{Binding Anotacao}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

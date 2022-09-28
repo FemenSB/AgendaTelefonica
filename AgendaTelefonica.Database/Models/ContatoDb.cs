@@ -13,5 +13,10 @@ namespace AgendaTelefonica.Database.Models
         public int Id { set; get; }
         public string? Anotacao { set; get; }
         public List<TipoDeContato> TiposDeContato { set; get; }
+
+        public ContatoDb()
+        {
+            TiposDeContato = new List<TipoDeContato>();
+        }
     }
 }
