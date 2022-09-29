@@ -4,21 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgendaTelefonica"
+        xmlns:ViewModels="clr-namespace:AgendaTelefonica.ViewModels"
         mc:Ignorable="d"
-           Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize">
-    <Grid>
+        Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize">
+    <Window.Resources>
+        <ViewModels:MainWindowViewModel x:Key="MainWindowViewModel" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource ResourceKey=MainWindowViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Width="150" Content="Adicionar Contanto"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center" Height="25"/>
+        <Button Grid.Row="0"
+                Width="150"
+                Height="25"
+                Content="Adicionar Contanto"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="AddContato"/>
 
         <DataGrid x:Name="ContatoDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
-                  Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True">
+                  Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  ItemsSource="{Binding Contatos}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="Numero" Binding="{Binding Numero}"/>
