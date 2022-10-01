@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaTelefonica.Database;
+using AgendaTelefonica.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +12,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AgendaTelefonica
+namespace AgendaTelefonica.Views
 {
     /// <summary>
-    /// Interaction logic for ContatoPage.xaml
+    /// Lógica interna para AddContato.xaml
     /// </summary>
-    public partial class AddContatoPage : Page
+    public partial class AddContato : Window
     {
-        public AddContatoPage()
+
+       
+        public AddContato()
         {
             InitializeComponent();
+
+        }
+        private void Registar(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

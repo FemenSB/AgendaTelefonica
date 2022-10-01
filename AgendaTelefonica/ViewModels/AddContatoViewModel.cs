@@ -1,6 +1,7 @@
 ﻿using AgendaTelefonica.Database;
 using AgendaTelefonica.Models;
 using AgendaTelefonica.Utils;
+using AgendaTelefonica.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -26,6 +27,7 @@ namespace AgendaTelefonica.ViewModels
         public void RegisterContatoAction()
         {
             databaseService.AddContato(new Database.Models.ContatoDb() {Nome = this.Nome, Numero = this.Numero, Anotacao = this.Anotacao });
+            
         }
     }
 }

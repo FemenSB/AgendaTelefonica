@@ -6,33 +6,95 @@
         xmlns:local="clr-namespace:AgendaTelefonica"
         xmlns:ViewModels="clr-namespace:AgendaTelefonica.ViewModels"
         mc:Ignorable="d"
-        Title="Agenda Telefônica" Height="450" Width="300" MinHeight="250" MinWidth="100" MaxHeight="600" MaxWidth="400" ResizeMode="NoResize">
+        Title="Agenda Telefônica" Height="535" Width="356" ResizeMode="NoResize">
     <Window.Resources>
         <ViewModels:MainWindowViewModel x:Key="MainWindowViewModel" />
     </Window.Resources>
     <Grid DataContext="{StaticResource ResourceKey=MainWindowViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0"
+        <Button
                 Width="150"
                 Height="25"
-                Content="Adicionar Contanto"
+                Content="+ Adicionar Contanto"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="AddContato"/>
+                Click="AddContato"
+            Background="Transparent"/>
 
         <DataGrid x:Name="ContatoDataGrid" AutoGenerateColumns="False" IsReadOnly="True"
-                  Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True"
+                  Grid.Row="1"  ColumnWidth="*" Margin="5,5,5,50" IsSynchronizedWithCurrentItem="True"
                   ItemsSource="{Binding Contatos}">
-            <DataGrid.Columns>
+            <DataGrid.Columns >
                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="Numero" Binding="{Binding Numero}"/>
                 <DataGridTextColumn Header="Anotação" Binding="{Binding Anotacao}"/>
+
+
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Content="Delete" Click="DeleteContanto"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Editar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Content="Editar" Click="SelectProductToEdit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1" Margin="5" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Margin="5">
+                    <Label Content="Editar Contato" FontWeight="Bold" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" Margin="5"/>
+                    <Grid Name="UpdateProductGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="189" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Nome" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Numero" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Numero}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Anotacao" />
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Anotacao}" />
+
+
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Content="Editar" Background="Transparent"
+                                Margin="15" Click="UpdateItem"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
+       
+       
+       
+       
+       
