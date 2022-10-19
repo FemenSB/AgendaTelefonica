@@ -16,6 +16,11 @@ namespace AgendaTelefonica.ViewModels
 
         public MainWindowViewModel()
         {
+            RefreshContatos();
+        }
+
+        public void RefreshContatos()
+        {
             Contatos = databaseService.GetAllContatos().Select(item => new Contato(item)).ToList();
         }
     }
